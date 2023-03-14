@@ -6,14 +6,17 @@ figma.ui.onmessage = (msg) => {
   if (msg.type === 'clone') {
     const imagePlugin = async () => {
       const node = figma.currentPage.selection[0];
+      if(node) {
       const w = node.width;
       const h = node.height;
+      }
 
       // Export a 2x resolution PNG of the node
       const bytes = await node.exportAsync({
         format: 'PNG',
         constraint: { type: 'SCALE', value: 2 },
       });
+
       const processName = 'ImageProcess';
 
       if (node) {
@@ -89,6 +92,8 @@ figma.ui.onmessage = (msg) => {
         }
       })
       .catch((err) => console.error('Error retrieving value:', err));
+  }
+  if (msg.type === 'Get_Refresh') {
     figma.clientStorage
       .getAsync('refresh_token')
       .then((value) => {
