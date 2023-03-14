@@ -1,0 +1,22 @@
+@import '../styles/variables.scss';
+
+.base {
+  border-radius: 8px;
+  outline: none;
+  width: 353.5px;
+  height: 50px;
+}
+
+.primary {
+  background-color: rgb(49, 45, 45);
+  color: white;
+  font-weight: bold;
+  border: none;
+  font-size: large;
+  font-family: 'Manrope';
+
+  &:hover {
+    background-color: darken(rgb(49, 45, 45), 20%);
+    cursor: pointer;
+  }
+}

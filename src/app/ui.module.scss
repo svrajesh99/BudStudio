@@ -1,0 +1,394 @@
+@import './styles/variables.scss';
+
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.devbudContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+
+.Container {
+  width: 100%;
+  background: linear-gradient(152.61deg, #3170FE 8.15%, #BA96FF 49.16%, #C9DEFF 103.02%);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+
+  .Title {
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Manrope';
+  }
+
+  .devbudTitle {
+    color: white;
+    font-family: "Manrope";
+    margin-top: 15px;
+  }
+
+  .BottomText {
+    font-size: 10px;
+    font-weight: bold;
+    font-family: 'Manrope';
+    color:#f1efef;
+    margin-top: 10px;
+    width: 60%;
+    text-align: center;
+  }
+
+
+  .inputField {
+    width: 100%;
+    height: 30px;
+    border-radius: 0.125rem;
+    border: 1px solid #3D3D42;
+    color: white;
+    background-color:#18181B;
+    margin-top: 10px;
+    
+  }
+
+  .logo {
+    margin-top: 10px;
+    width: 35%;
+  }
+
+  .inputField:hover {
+    border: 1px solid #A1A1AA;
+  }
+
+  .inputField > input {
+    background-color: #18181B;
+    outline: none;
+    border: none;
+    color: white;
+    margin-left: 10px;
+    width: 90%;
+    height: 100%;
+    font-size: 12px;
+  }
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 17px;
+  width: 90%;
+}
+
+.image {
+  width: 65%;
+  height: 65%;
+  margin: 20px;
+}
+
+.link {
+  color: #A1A1AA;
+  font-size: 12px;
+  font-weight: normal;
+  margin-top: 15px;
+  margin-right: 53%;
+}
+
+.link:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.tabsAndLogout {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 100%;
+  margin-top: 10px;
+  border-bottom: 1px solid #3D3D44;
+  border-top: 1px solid #3D3D44;
+}
+
+.tabs {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 20px;
+}
+
+.tab {
+  color: #C9DEFF;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.tab:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.tabActive {
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.logout {
+  color: #C9DEFF;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.logout:hover {
+  color: white;
+}
+
+.tags {
+  border: 1px solid #8A5DE4;
+  border-radius: 5px;
+  background-color: #3170FE;
+  padding: 5px;
+  margin: 3px;
+  cursor: pointer;
+}
+
+.tags > h3 {
+  color: white;
+  font-size: 10px;
+}
+
+.tags:hover {
+  background-color: darken(#3170FE, 15%);
+}
+
+.tagActive {
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  background-color: darken(#3170FE, 20%);
+  padding: 5px;
+  margin: 3px;
+  cursor: pointer;
+}
+
+.tagActive > h3 {
+  color: white;
+  font-size: 10px;
+}
+
+.DevbudTags {
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.contentText {
+  color: white;
+  font-size: 15px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.customText {
+  font-size: 10px;
+  color: white;
+}
+
+.custom {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 15px;
+  width: 90%;
+}
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+}
+
+.bulb {
+  width: 25px;
+  height: auto;
+  border-radius: 10px;
+  margin-top: 15px;
+  border: 3px solid #8A5DE4;
+  background-color: white;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownContent {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #8A5DE4;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  z-index: 1;
+}
+
+.dropdownContent > div {
+    color: white;
+    font-weight: bold;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+}
+
+.dropdownContent div:hover {background-color: #6128d3;}
+.dropdown:hover .dropdownContent {display: block;}
+
+.dropdownLogo {
+  width: 30px;
+  color: white;
+}
+
+.userName {
+  background-color: #8A5DE4 !important;
+  font-size: 12.5px !important;
+  cursor: default !important;
+  display: grid;
+  place-items: center;
+}
+
+.profileImage {
+  width: 35px;
+  height: 35px;
+  border-radius: 20px;
+  margin-top: 15px;
+  border: 3px solid #8A5DE4;
+  cursor: pointer;
+}
+
+.line {
+  background-color: #C9DEFF;
+  width: 25%;
+  height: 0.5px;
+}
+
+.textareaDiv {
+  width: 88%;
+  height: 90px;
+  background-color: #18181B;
+  margin-top: 10px;
+  border: 1px solid #696971;
+  border-radius: 5px;
+}
+
+.textareaDiv:hover {
+  border: 1px solid #A1A1AA;
+}
+
+.textarea {
+  background-color: #18181B;
+  border: none;
+  outline: none;
+  width: 95%;
+  height: 92%;
+  color: white;
+  margin-left: 7px;
+  margin-top: 8px;
+  font-size: 10px;
+  font-weight: bold;
+  resize: none;
+}
+
+.contentTextAreaDiv {
+  width: 88%;
+  height: 120px;
+  background-color: #18181B;
+  margin-top: 10px;
+  border: 1px solid #696971;
+  border-radius: 5px;
+}
+
+.textareaDiv:hover {
+  border: 1px solid #A1A1AA;
+}
+
+.textarea {
+  background-color: #18181B;
+  border: none;
+  outline: none;
+  width: 95%;
+  height: 92%;
+  color: white;
+  margin-left: 7px;
+  margin-top: 8px;
+  font-size: 10px;
+  font-weight: bold;
+  resize: none;
+}
+
+.devbudButton {
+  border-radius: 4px;
+  outline: none;
+  width: 300px;
+  height: 35px;
+  background-color: #3170FE;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  font-family: 'Manrope';
+  display: grid;
+  place-items: center;
+  margin-top: 20px;
+}
+
+.devbudButton:hover {
+  background-color: darken(#3170FE, 15%);
+  cursor: pointer;
+}
+
+
+.textareaDivWriting {
+  width: 88%;
+  height: 40px;
+  background-color: #18181B;
+  border: 1px solid #696971;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.textareaDivWriting:hover {
+  border: 1px solid #A1A1AA;
+}
+
+.textareaWriting {
+  background-color: #18181B;
+  border: none;
+  outline: none;
+  width: 95%;
+  height: 70%;
+  color: white;
+  margin-left: 7px;
+  margin-top: 8px;
+  font-size: 10px;
+  font-weight: bold;
+  resize: none;
+}
+
+.componentImage {
+  width: 70%;
+  height: auto;
+  max-height: 90px;
+}
