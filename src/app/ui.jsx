@@ -90,6 +90,7 @@ const UI = ({}) => {
 
   useEffect(() => {
     parent.postMessage({ pluginMessage: { type: 'Get_Access' } }, '*');
+    parent.postMessage({ pluginMessage: { type: 'Get_Refresh' } }, '*');
     parent.postMessage({ pluginMessage: { type: 'Get_userData' } }, '*');
     window.onmessage = (event) => {
       let data = event.data.pluginMessage?.user_data;
@@ -106,15 +107,14 @@ const UI = ({}) => {
       let process = event.data.pluginMessage?.process;
       let Access = event.data.pluginMessage?.Get_Access;
       let Accesstoken = event.data.pluginMessage?.accesstoken;
-      if (Accesstoken) {
-        setAccessToken(Accesstoken);
-      }
+      let Refresh = event.data.pluginMessage?.Get_Refresh;
       let Refreshtoken = event.data.pluginMessage?.refreshtoken;
-      if (Refreshtoken) {
+      if (Refresh) {
         setRefreshToken(Refreshtoken);
       }
       if (Access === true) {
         setAuth(true);
+        setAccessToken(Accesstoken);
       } else if (process == 'LoginProcess') {
         let windowURL = event.data.pluginMessage?.windowURL;
         let pollURL = event.data.pluginMessage?.pollURL;
