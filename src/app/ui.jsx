@@ -12,6 +12,7 @@ const UI = ({}) => {
   const [refreshToken, setRefreshToken] = useState();
   const [content, setContent] = useState();
   const [userData, setUserData] = useState();
+  const [loading, setLoading] = useState(false);
   const [replaceImageURL, setReplaceImageURL] = useState();
   const tags = [
     'Make Shorter',
@@ -39,7 +40,7 @@ const UI = ({}) => {
     }
   }
 
-  const fetchImageComponentTimer = setInterval(fetchImageComponent, 1000);
+  const fetchImageComponentTimer = setInterval(fetchImageComponent, 2000);
 
   const [tab, setTab] = useState(true); //true stands for editing tab
 
@@ -49,11 +50,13 @@ const UI = ({}) => {
 
   const googleLogin = () => {
     parent.postMessage({ pluginMessage: { type: 'login' } }, '*');
+    setLoading(true)
   };
 
   const openProfile = () => {};
 
   const logout = () => {
+    setLoading(false);
     const url = 'https://api.bud.dev2staging.com/v1/users/logout';
     const requestBody = { refreshToken: `${refreshToken}` };
     const config = { headers: { Authorization: `Bearer ${accessToken}` } };
@@ -111,10 +114,12 @@ const UI = ({}) => {
       let Refreshtoken = event.data.pluginMessage?.refreshtoken;
       if (Refresh) {
         setRefreshToken(Refreshtoken);
+        console.log("Refresh Token is", Refreshtoken)
       }
       if (Access === true) {
         setAuth(true);
         setAccessToken(Accesstoken);
+        console.log("Access Token is", Accesstoken);
       } else if (process == 'LoginProcess') {
         let windowURL = event.data.pluginMessage?.windowURL;
         let pollURL = event.data.pluginMessage?.pollURL;
@@ -197,7 +202,7 @@ const UI = ({}) => {
           />
 
           <div className={styles.buttonContainer}>
-            <Button onClick={googleLogin}>Login with BudStudio</Button>
+            { loading? <div className={styles.loaderButton}><img src="https://ksdqdmtvyelwbucrzien.supabase.co/storage/v1/object/public/budimages/loading.gif?t=2023-03-15T05%3A05%3A06.355Z"/></div>: <Button onClick={googleLogin}>Login with BudStudio</Button> }
           </div>
           <h2 className={styles.BottomText}>
             *Consectetur adipiscing elit sed do eiusmod lorem ipsum dolor sit amet c. sit amet, consectetur *

@@ -60,6 +60,23 @@
     
   }
 
+  .loaderButton {
+    width: 353.5px;
+    background-color: rgb(49, 45, 45);
+    height: 50px;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+  }
+
+  .loaderButton > img {
+    background-color: rgb(49, 45, 45);
+    width: 40%;
+    height: 45px;
+  }
+
   .logo {
     margin-top: 10px;
     width: 35%;
