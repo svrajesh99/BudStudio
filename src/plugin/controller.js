@@ -6,22 +6,20 @@ figma.ui.onmessage = (msg) => {
   if (msg.type === 'clone') {
     const imagePlugin = async () => {
       const node = figma.currentPage.selection[0];
+      const processName = 'ImageProcess';
+      
       if(node) {
       const w = node.width;
       const h = node.height;
-      }
-
+      
       // Export a 2x resolution PNG of the node
       const bytes = await node.exportAsync({
         format: 'PNG',
         constraint: { type: 'SCALE', value: 2 },
       });
+      sendDatatoUI(bytes);
+    }
 
-      const processName = 'ImageProcess';
-
-      if (node) {
-        sendDatatoUI(bytes);
-      }
 
       // Add the image onto the canvas as an image fill in a frame
       // const image = figma.createImage(bytes)

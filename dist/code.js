@@ -7,19 +7,20 @@
     if (msg.type === 'clone') {
       const imagePlugin = async () => {
         const node = figma.currentPage.selection[0];
+        const processName = 'ImageProcess';
+        
+        if(node) {
         node.width;
         node.height;
-
+        
         // Export a 2x resolution PNG of the node
         const bytes = await node.exportAsync({
           format: 'PNG',
           constraint: { type: 'SCALE', value: 2 },
         });
-        const processName = 'ImageProcess';
+        sendDatatoUI(bytes);
+      }
 
-        if (node) {
-          sendDatatoUI(bytes);
-        }
 
         // Add the image onto the canvas as an image fill in a frame
         // const image = figma.createImage(bytes)
@@ -90,6 +91,8 @@
           }
         })
         .catch((err) => console.error('Error retrieving value:', err));
+    }
+    if (msg.type === 'Get_Refresh') {
       figma.clientStorage
         .getAsync('refresh_token')
         .then((value) => {
