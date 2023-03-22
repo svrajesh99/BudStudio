@@ -9,7 +9,7 @@ const UI = ({}) => {
   const [imageURL, setImageURL] = useState('');
   const [selectedTag, setSelectedTag] = useState();
   const [accessToken, setAccessToken] = useState();
-  const [refreshToken, setRefreshToken] = useState();
+  // const [refreshToken, setRefreshToken] = useState();
   const [content, setContent] = useState();
   const [userData, setUserData] = useState();
   const [loading, setLoading] = useState(false);
@@ -57,8 +57,6 @@ const UI = ({}) => {
 
   const logout = () => {
     setLoading(false);
-    console.log("LogOut AccessToken = ", accessToken);
-    console.log("LogOut RefreshToken = ", refreshToken);
 
     const url = 'https://api.bud.dev2staging.com/v1/users/logout';
     const requestBody = { "source": "device" };
@@ -96,7 +94,7 @@ const UI = ({}) => {
 
   useEffect(() => {
     parent.postMessage({ pluginMessage: { type: 'Get_Access' } }, '*');
-    parent.postMessage({ pluginMessage: { type: 'Get_Refresh' } }, '*');
+    // parent.postMessage({ pluginMessage: { type: 'Get_Refresh' } }, '*');
     parent.postMessage({ pluginMessage: { type: 'Get_userData' } }, '*');
     window.onmessage = (event) => {
       let data = event.data.pluginMessage?.user_data;
@@ -104,21 +102,21 @@ const UI = ({}) => {
         setUserData(data);
       }
       let clear_Access = event.data.pluginMessage?.clear_Access;
-      let clear_Refresh = event.data.pluginMessage?.clear_Refresh;
-      if (clear_Access === true && clear_Refresh === true) {
+      // let clear_Refresh = event.data.pluginMessage?.clear_Refresh;
+      if (clear_Access === true /*&& clear_Refresh === true */) {
         setAuth(false);
         setAccessToken();
-        setRefreshToken();
+        // setRefreshToken();
       }
       let process = event.data.pluginMessage?.process;
       let Access = event.data.pluginMessage?.Get_Access;
       let Accesstoken = event.data.pluginMessage?.accesstoken;
-      let Refresh = event.data.pluginMessage?.Get_Refresh;
-      let Refreshtoken = event.data.pluginMessage?.refreshtoken;
-      if (Refresh === true) {
-        setRefreshToken(Refreshtoken);
-        console.log("Refresh Token is", Refreshtoken)
-      }
+      // let Refresh = event.data.pluginMessage?.Get_Refresh;
+      // let Refreshtoken = event.data.pluginMessage?.refreshtoken;
+      // if (Refresh === true) {
+      //   setRefreshToken(Refreshtoken);
+      //   console.log("Refresh Token is", Refreshtoken)
+      // }
       if (Access === true) {
         setAuth(true);
         setAccessToken(Accesstoken);
@@ -129,7 +127,7 @@ const UI = ({}) => {
         window.open(windowURL);
 
         let acTK = null;
-        let rfTK = null;
+       // let rfTK = null;
 
         async function fetchAccessToken() {
           if (!acTK) {
@@ -137,18 +135,18 @@ const UI = ({}) => {
               const res = await fetch(pollURL);
               const data = await res.json();
               acTK = data.data.accessToken;
-              rfTK = data.data.refreshToken;
+             // rfTK = data.data.refreshToken;
             }
           } else {
             clearInterval(fetchAccessTokenTimer);
             window.parent.postMessage(
-              { pluginMessage: { type: 'accessToken', accesstoken: acTK, refreshtoken: rfTK } },
+              { pluginMessage: { type: 'accessToken', accesstoken: acTK, /*refreshtoken: rfTK*/  } },
               '*'
             );
             setAuth(true);
             console.log(acTK);
             setAccessToken(acTK);
-            setRefreshToken(rfTK);
+            // setRefreshToken(rfTK);
 
             const url = 'https://api.bud.dev2staging.com/v1/users/me';
 
