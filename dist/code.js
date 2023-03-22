@@ -63,7 +63,7 @@
         })
         .catch((err) => console.error('Error retrieving value:', err));
     }
-    const interval = 60 * 60 * 1000;
+    const interval = 518400000;
     const clearTokenintervel = () => {
       figma.clientStorage
         .deleteAsync('access_token')
@@ -111,7 +111,7 @@
         const data = await response.json();
         const code = data.data.code;
         console.log(code);
-        const WINDOW_BASE_URL = 'https://api.bud.dev2staging.com/v1/oauth/google?code=';
+        const WINDOW_BASE_URL = 'https://api.bud.dev2staging.com/v1/oauth/google?source=device&code=';
         const POLL_URL_BASE = 'https://api.bud.dev2staging.com/v1/plugin-auth/code?code=';
 
         const WINDOW_URL = WINDOW_BASE_URL.concat(code);
