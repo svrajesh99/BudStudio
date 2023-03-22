@@ -57,8 +57,11 @@ const UI = ({}) => {
 
   const logout = () => {
     setLoading(false);
+    console.log("LogOut AccessToken = ", accessToken);
+    console.log("LogOut RefreshToken = ", refreshToken);
+
     const url = 'https://api.bud.dev2staging.com/v1/users/logout';
-    const requestBody = { refreshToken: `${refreshToken}` };
+    const requestBody = { "source": "device" };
     const config = { headers: { Authorization: `Bearer ${accessToken}` } };
     axios
       .post(url, requestBody, config)
@@ -112,7 +115,7 @@ const UI = ({}) => {
       let Accesstoken = event.data.pluginMessage?.accesstoken;
       let Refresh = event.data.pluginMessage?.Get_Refresh;
       let Refreshtoken = event.data.pluginMessage?.refreshtoken;
-      if (Refresh) {
+      if (Refresh === true) {
         setRefreshToken(Refreshtoken);
         console.log("Refresh Token is", Refreshtoken)
       }
