@@ -78,6 +78,7 @@ figma.ui.onmessage = (msg) => {
     //   .catch((error) => console.error(error));
     figma.ui.postMessage({ clear_Access: true });
   };
+  
   if (msg.type === 'Get_Access') {
     figma.clientStorage
       .getAsync('access_token')
