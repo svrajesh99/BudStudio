@@ -10,6 +10,7 @@ const UI = ({}) => {
   const [selectedTag, setSelectedTag] = useState();
   const [accessToken, setAccessToken] = useState();
   // const [refreshToken, setRefreshToken] = useState();
+  const [fetchSuccess,setFetchSuccess] = useState(true);
   const [content, setContent] = useState();
   const [userData, setUserData] = useState();
   const [loading, setLoading] = useState(false);
@@ -126,6 +127,19 @@ const UI = ({}) => {
         let pollURL = event.data.pluginMessage?.pollURL;
         window.open(windowURL);
 
+        var startTime = new Date().getTime();
+
+        var interval = setInterval(function(){
+          if(new Date().getTime() - startTime > 900000){
+            if(!acTK) {
+              clearInterval(interval);
+              clearInterval(fetchAccessTokenTimer); 
+              setFetchSuccess(false);
+          }}
+          
+      }, 2000);
+        
+
         let acTK = null;
        // let rfTK = null;
 
@@ -188,11 +202,13 @@ const UI = ({}) => {
       }
     };
   }, []);
+
+
   return (
     <div className={styles.Container}>
-      {!auth ? (
+    { !auth ? ( fetchSuccess ?
         // LOGIN PAGE
-        <div className={styles.loginContainer}>
+        (<div className={styles.loginContainer}>
           <h4 className={styles.Title}>Let's Explore!</h4>
           <h2 className={styles.BottomText}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -208,7 +224,19 @@ const UI = ({}) => {
           <h2 className={styles.BottomText}>
             *Consectetur adipiscing elit sed do eiusmod lorem ipsum dolor sit amet c. sit amet, consectetur *
           </h2>
-        </div>
+        </div>) : (<div className={styles.loginContainer}>
+          <h4 className={styles.Title}>Oops!</h4>
+          <h2 className={styles.BottomText}>
+            There was a problem while authenticating you, please contact the Bud authorities...
+          </h2>
+          <img
+            className={styles.logo}
+            src="https://ksdqdmtvyelwbucrzien.supabase.co/storage/v1/object/public/budimages/StandingLogo.png?t=2023-03-13T08%3A35%3A24.793Z"
+          />
+          <h2 className={styles.BottomText}>
+            ...or try again later!!
+          </h2>
+        </div>)
       ) : (
         // BUD PAGE
         <div className={styles.devbudContainer}>
